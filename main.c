@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 21:50:36 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/05 01:07:24 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/05 01:53:25 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
-#define SECONDS 40
+#define SECONDS 8
 
 int findanother(int min, int max, int *skip)
 {
@@ -170,12 +170,12 @@ int *genere(int n, int argc, char **argv)
         }
         else
         {
-        nb[0] = (rand() % (30 - 0 + 1) + 0);
-        nb[1] = (rand() % (30 - 0 + 1) + 0);
-        nb[2] = (rand() % (30 - 0 + 1) + 0);
-        nb[3] = (rand() % (60 - 0 + 1) + 0);
-        nb[4] = (rand() % (100 - 0 + 1) + 0);
-        nb[5] = (rand() % (100 - 0 + 1) + 0);
+        nb[0] = (rand() % (30 - 1 + 1) + 1);
+        nb[1] = (rand() % (30 - 1 + 1) + 1);
+        nb[2] = (rand() % (30 - 1 + 1) + 1);
+        nb[3] = (rand() % (60 - 1 + 1) + 1);
+        nb[4] = (rand() % (100 - 1 + 1) + 1);
+        nb[5] = (rand() % (100 - 1 + 1) + 1);
         }
         printf("NUMBER : %d %d %d %d %d %d \n\n", nb[0], nb[1], nb[2], nb[3], nb[4], nb[5]);
         if(argc == 1)
@@ -216,6 +216,11 @@ int main(int argc, char **argv)
             numbertofind = atoi(argv[7]);
         else
             numbertofind = (rand() % (1000 - 0 + 1) + 0);
+        if(argc == 1)
+        {
+            printf("Please touch a key to generate the problem\n");
+            getchar();
+        }
         printf("\n\nNUMBER TO FIND : %d\n", numbertofind);
         nb = genere(numbertofind, argc, argv);
         break;
