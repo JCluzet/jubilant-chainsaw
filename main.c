@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 21:50:36 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/05 01:53:25 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/05 16:32:56 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define SECONDS 8
+#define MAXMOVES 5
 
 int findanother(int min, int max, int *skip)
 {
@@ -113,8 +114,8 @@ int possible(int *nb, int n, int p)
                 starttime = time(NULL);
                 if(starttime > endtime)
                 {
-                    printf("\bCan't find more than %d Moves.\n", p + 1);
-                    return (-1);
+                    printf("\bCan't find for %d Moves.\n", p);
+                    return (0);
                 }
                 // if (lasti < i)
                 // {
@@ -155,7 +156,7 @@ int possible(int *nb, int n, int p)
 int *genere(int n, int argc, char **argv)
 {
     int nb[6] = {0, 0, 0, 0, 0, 0};
-    int tofind = 5;
+    int tofind = MAXMOVES;
     while (1)
     {
         srand ( time(NULL) );
@@ -185,6 +186,8 @@ int *genere(int n, int argc, char **argv)
         }
         while(1)
         {
+            if(tofind < 1)
+                return(0);
             printf("\n\nNOW SEARCHING %d MOVES...\n", tofind);
             if (possible(nb, n, tofind) == -1)
                 return(0);
