@@ -8,7 +8,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME        := executeme
+NAME        := chiffre
 BIMLX       := OFF
 CC        := gcc
 CFLAGS      :=
@@ -24,7 +24,7 @@ OBJ_DIR 	:=	$(BUILD_DIR)/obj
 DIRS		:=	$(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 OBJS 	    :=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-SRCS        :=      main.c \
+SRCS        :=      chiffre.c \
 					
 
 ################################################################################
@@ -43,6 +43,7 @@ RM		    := rm -f
 $(NAME):	$(OBJS)
 			@echo "\033[34mCompilation of $(NAME) ...\033[0m"
 			@$(CC) $(CFLAGS) $(INCS) $(SRCS) -o $(NAME)
+			@gcc lettre.c -o lettre
 			@echo "\033[32m$(NAME) created\n\033[0m"
 
 all:		$(NAME)
